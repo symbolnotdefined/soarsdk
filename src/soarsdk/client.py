@@ -309,8 +309,9 @@ class PhantomClient:
         self._handle_request(
             method="DELETE",
             url="container",
-            params={"ids": [container.id for container in args]},
+            data=json.dumps({"ids": [container.id for container in args]}),
         )
+
         for container in args:
             container.id = None
 
